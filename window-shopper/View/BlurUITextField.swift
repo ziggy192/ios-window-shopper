@@ -18,6 +18,25 @@ class BlurUITextField: UITextField {
     }
     */
 
+    override func draw(_ rect: CGRect) {
+        //never implement this and leave it empty
+        //performance issue
+        
+        let size : CGFloat  = 20
+        let currencyLBL  = UILabel(frame: CGRect(x: 5, y: frame.height / 2 - size / 2 , width: size, height: size))
+        currencyLBL.textColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
+        currencyLBL.backgroundColor = #colorLiteral(red: 0.7243637443, green: 0.7200595737, blue: 0.727673471, alpha: 0.7954837329)
+        currencyLBL.textAlignment = .center
+        currencyLBL.layer.cornerRadius = 5
+        currencyLBL.clipsToBounds = true
+        let numberSign = NumberFormatter()
+        numberSign.locale = .current
+        numberSign.numberStyle = .currency
+        currencyLBL.text = numberSign.currencySymbol
+        self.addSubview(currencyLBL)
+        
+        
+    }
     override func prepareForInterfaceBuilder() {
         customize()
     }
